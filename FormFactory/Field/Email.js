@@ -3,11 +3,26 @@ export default class Email{
         this.label = item.label;
     }
 
-    display(){
-        return `
-            <div class="form-group">
-                <label>${this.label}</label>
-                <input type="email" />
-            </div>` 
+     display(){
+        this.element = document.createElement('div');
+        this.element.classList.add("form-group");
+
+        const label = document.createElement('label');
+        label.innerHTML = this.label;
+
+        this.element.appendChild(label);
+
+        const input = document.createElement('input');
+        input.type = "email";
+
+        this.element.appendChild(input);
+
+        return this.element;
+    }
+
+    onChange(callback){
+        this.element.querySelector('input').addEventListener('keyup',(e) => {
+            callback(e.target.value);
+        });
     }
 }

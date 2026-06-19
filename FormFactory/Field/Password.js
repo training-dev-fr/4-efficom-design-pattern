@@ -4,10 +4,25 @@ export default class Password{
     }
 
     display(){
-        return `
-            <div class="form-group">
-                <label>${this.label}</label>
-                <input type="password" />
-            </div>` 
+        this.element = document.createElement('div');
+        this.element.classList.add("form-group");
+
+        const label = document.createElement('label');
+        label.innerHTML = this.label;
+
+        this.element.appendChild(label);
+
+        const input = document.createElement('input');
+        input.type = "password";
+
+        this.element.appendChild(input);
+
+        return this.element;
+    }
+
+    onChange(callback){
+        this.element.querySelector('input').addEventListener('keyup',(e) => {
+            callback(e.target.value);
+        });
     }
 }

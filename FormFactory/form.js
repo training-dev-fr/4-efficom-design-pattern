@@ -8,7 +8,7 @@ const loadData = async () => {
 
 const showField = (element) => {
     let item = new FormFactory(element);
-    document.querySelector('#form').innerHTML += item.display();
+    document.querySelector('#form').appendChild(item.display());
     item.onChange(value => console.log(value));
 }
 
