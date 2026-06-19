@@ -1,0 +1,15 @@
+import Image from "./Image.js";
+import Map from "./Map.js";
+import Video from "./Video.js";
+
+export default class DiaporamaFactory{
+    constructor(element){
+        if(element.type === "image"){
+            return new Image(element);
+        }else if(element.type === "video"){
+            return new Video(element);
+        }else if(element.type === "map"){
+            return new Map(element);
+        }
+    }
+}
