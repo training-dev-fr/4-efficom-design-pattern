@@ -56,5 +56,6 @@
                 "ch": "Suisse",
                 "es": "Espagne"
             }
-        }
+        },
+        { "type": "ratings", "label":"Note"}
 ]
