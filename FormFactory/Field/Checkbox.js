@@ -5,17 +5,18 @@ export default class Checkbox extends Field {
         super(item);
         this.options = item.options;
         this.selectedValue = [];
+        this.multiple = item.multiple;
     }
 
     display() {
-       
+
         let element = super.display([]);
 
         for (let opt of this.options) {
             const optLabel = document.createElement('label');
             const optInput = document.createElement('input');
             optInput.value = opt;
-            optInput.type = "checkbox";
+            optInput.type = this.multiple ? "checkbox" : "radio";
             optInput.name = this.name + "[]";
             optLabel.appendChild(optInput);
             optLabel.innerHTML += opt;
@@ -28,12 +29,16 @@ export default class Checkbox extends Field {
     onChange(callback) {
         this.element.querySelectorAll('input').forEach(input => {
             input.addEventListener('click', (e) => {
-                if(this.selectedValue.some(el => el === e.target.value)){
-                    this.selectedValue = this.selectedValue.filter(el => el !== e.target.value);
+                if (this.multiple) {
+                    if (this.selectedValue.some(el => el === e.target.value)) {
+                        this.selectedValue = this.selectedValue.filter(el => el !== e.target.value);
+                    } else {
+                        this.selectedValue.push(e.target.value);
+                    }
+                    super.onChange(this.selectedValue, callback);
                 }else{
-                    this.selectedValue.push(e.target.value);
+                    super.onChange(e.target.value, callback);
                 }
-                callback(this.selectedValue);
             });
         })
     }
