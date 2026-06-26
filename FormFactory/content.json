@@ -1,4 +1,4 @@
-[
+    [
         {
             "type": "text",
             "label": "Nom d'utilisateur",
@@ -44,5 +44,17 @@
                 "Ananas",
                 "Kiwi"
             ]
+        },
+        {
+            "type": "select",
+            "label": "Pays",
+            "id": "country",
+            "name": "country",
+            "options": {
+                "fr": "France",
+                "be": "Belgique",
+                "ch": "Suisse",
+                "es": "Espagne"
+            }
         }
 ]
