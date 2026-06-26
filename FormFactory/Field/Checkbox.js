@@ -1,24 +1,22 @@
-export default class Checkbox {
+import Field from "./Field.js";
+
+export default class Checkbox extends Field {
     constructor(item) {
-        this.label = item.label;
+        super(item);
         this.options = item.options;
         this.selectedValue = [];
     }
 
     display() {
-        this.element = document.createElement('div');
-        this.element.classList.add("form-group");
-
-        const label = document.createElement('label');
-        label.innerHTML = this.label;
-
-        this.element.appendChild(label);
+       
+        let element = super.display([]);
 
         for (let opt of this.options) {
             const optLabel = document.createElement('label');
             const optInput = document.createElement('input');
             optInput.value = opt;
             optInput.type = "checkbox";
+            optInput.name = this.name + "[]";
             optLabel.appendChild(optInput);
             optLabel.innerHTML += opt;
             this.element.appendChild(optLabel);

@@ -1,28 +1,18 @@
-export default class Text{
-    constructor(item){
-        this.label = item.label;
-        this.element = null;
+import Field from "./Field.js";
+
+export default class Text extends Field {
+    constructor(item) {
+        super(item);
     }
 
-    display(){
-        this.element = document.createElement('div');
-        this.element.classList.add("form-group");
-
-        const label = document.createElement('label');
-        label.innerHTML = this.label;
-
-        this.element.appendChild(label);
-
+    display() {
         const input = document.createElement('input');
         input.type = "text";
-
-        this.element.appendChild(input);
-
-        return this.element;
+        return super.display(input);
     }
 
-    onChange(callback){
-        this.element.querySelector('input').addEventListener('keyup',(e) => {
+    onChange(callback) {
+        this.element.querySelector('input').addEventListener('keyup', (e) => {
             callback(e.target.value);
         });
     }

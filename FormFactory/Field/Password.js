@@ -1,23 +1,14 @@
-export default class Password{
+import Field from "./Field.js";
+
+export default class Password extends Field {
     constructor(item){
-        this.label = item.label;
+        super(item);
     }
 
     display(){
-        this.element = document.createElement('div');
-        this.element.classList.add("form-group");
-
-        const label = document.createElement('label');
-        label.innerHTML = this.label;
-
-        this.element.appendChild(label);
-
         const input = document.createElement('input');
         input.type = "password";
-
-        this.element.appendChild(input);
-
-        return this.element;
+        return super.display(input);
     }
 
     onChange(callback){

@@ -1,5 +1,5 @@
 export default class User{
-    constructor(Basket basket){
+    constructor(basket: Basket){
         this.basket = basket;
     }
 }
