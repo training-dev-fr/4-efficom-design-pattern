@@ -4,6 +4,7 @@
 // element.style.fontStyle = "italic";
 
 import {$} from './JQuery.js';
+
 $(".toto").setFontSize("24px")
        .setColor("red")
        .setFontStyle("italic");

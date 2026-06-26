@@ -1,18 +1,21 @@
-export default class jQuery{
-    querySelector(selector){
+export default class jQuery {
+    querySelector(selector) {
         this.element = document.querySelector(selector);
     }
 
-    setFontSize(){
-
+    setFontSize(size) {
+        this.element.style.fontSize = size;
+        return this;
     }
 
-    setColor(){
-
+    setColor(color) {
+        this.element.style.color = color;
+        return this;
     }
 
-    setFontStyle(){
-
+    setFontStyle(style) {
+        this.element.style.fontStyle = style;
+        return this;
     }
 }
 
@@ -22,4 +25,4 @@ let $ = (selector) => {
     return jquery;
 }
 
-export {$};
+export { $ };
