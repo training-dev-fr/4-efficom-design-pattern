@@ -1,5 +1,6 @@
 export default class Item{
-    constructor(value){
+    constructor(value, next){
         this.value = value;
+        this.next = next;
     }
 }
